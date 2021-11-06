@@ -14,7 +14,7 @@ This application requires a reasonably recent version of Node.js (tested on v14)
 # Install dependencies
 $ npm install
 
-# Start docker containers
+# Start docker containers (if you want to setup a local Kafka. Skip this if you'll use Confluent Cloud)
 $ docker-compose up -d
 
 # Run server and consumer
