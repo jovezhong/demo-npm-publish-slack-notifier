@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/Nevon/demo-slack-npm-notifier#readme",
   "dependencies": {
-    "@slack/webhook": "^5.0.3",
-    "kafkajs": "^1.14.0",
+    "@slack/webhook": "^5.0.4",
+    "kafkajs": "^1.15.0",
     "npm-hook-receiver": "^1.0.0"
   }
 }
