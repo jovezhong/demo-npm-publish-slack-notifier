@@ -6,9 +6,10 @@ module.exports = async ({ kafka, config, slack }) => {
 
   await consumer.run({
     eachMessage: async ({ message }) => {
-      const { package, version } = JSON.parse(message.value.toString());
+      const text=message.value.toString();
+      //const { package, version } = JSON.parse(message.value.toString());
 
-      const text = `:package: ${package}@${version} released\n<https://www.npmjs.com/package/${package}/v/${version}|Check it out on NPM>`;
+      //const text = `:package: ${package}@${version} released\n<https://www.npmjs.com/package/${package}/v/${version}|Check it out on NPM>`;
 
       await slack.send({
         text,
