@@ -48,7 +48,10 @@ module.exports = ({ producer, config }) => {
         messages: [
           {
             key: 'key',
-            value: ''+req.params.number,
+            value: JSON.stringify({
+              _time: new Date(),
+              number: parseInt(req.params.number)
+            }),
           },
         ],
       });
