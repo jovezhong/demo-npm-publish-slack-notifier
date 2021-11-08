@@ -17,7 +17,7 @@ module.exports = ({ producer, config }) => {
 
       try {
         await producer.send({
-          topic: config.topic,
+          topic: config.topicToSend,
           messages: [
             {
               key: package,
@@ -44,7 +44,7 @@ module.exports = ({ producer, config }) => {
   function respondSend(req,res,next) {
     try {
       producer.send({
-        topic: config.topic,
+        topic: config.topicToSend,
         messages: [
           {
             key: 'key',

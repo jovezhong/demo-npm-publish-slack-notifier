@@ -20,7 +20,8 @@ const consumer = {
 
 const app = {
   secret: process.env.HOOK_SECRET,
-  topic: process.env.TOPIC || "npm-package-published",
+  topicToSend: process.env.TOPIC_SEND || "topic1",
+  topicToReact: process.env.TOPIC_REACT || "topic1",
   mount: "/hook",
 };
 

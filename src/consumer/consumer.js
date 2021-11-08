@@ -2,7 +2,7 @@ module.exports = async ({ kafka, config, slack }) => {
   const consumer = kafka.consumer(config.consumer);
 
   await consumer.connect();
-  await consumer.subscribe({ topic: config.app.topic, fromBeginning: true });
+  await consumer.subscribe({ topic: config.app.topicToReact, fromBeginning: true });
 
   await consumer.run({
     eachMessage: async ({ message }) => {

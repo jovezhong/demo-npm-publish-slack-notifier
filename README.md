@@ -31,7 +31,8 @@ Configuration is done by setting environment variables:
 
 * `HOOK_SECRET` - Secret used when registering the hook with NPM **REQUIRED**
 * `SLACK_WEBHOOK_URL` - [Slack incoming webhook URL](https://api.slack.com/messaging/webhooks) to post messages to **REQUIRED**
-* `TOPIC` - The topic to produce to and consume from (default: `npm-package-published`)
+* `TOPIC_SEND` - The Kafka topic to produce (default: `topic1`)
+* `TOPIC_REACT` - The Kakfa topic to consume messages and send to Slack  (default: `topic1`)
 * `PORT` - Port for the HTTP server to listen on (default: `3000`)
 * `BOOTSTRAP_BROKER` - Initial broker to connect to (default: `localhost:9092`)
 * `KAFKA_SSL` - [TLS SecureContext](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback) options. Can be set to `true` to use TLS with default configuration, else a JSON object that gets passed to `JSON.parse`. `false` will connect without encryption (default: `false`)
@@ -42,13 +43,13 @@ Configuration is done by setting environment variables:
 When using the provided `docker-compose.yml` file, the topic will be created automatically when producing the first message. If not using topic auto-creation, the script in `bin/create-topic` can be used to create the topic ahead of time:
 
 ```sh
-# Create the topic 'npm-package-published' with 3 partitions
-$ ./bin/create-topic "npm-package-published" 3
+# Create the topic 'topic1' with 3 partitions
+$ ./bin/create-topic "topic1" 3
 ```
 
 ## Sending a test message
 
-To see that the application is working, start the server and consumer and then send a test message:
+To see that the application is working, start the server and consumer and then send a test message (if you are using Confluent Cloud, then use its web UI to send a testing messsage):
 
 ```sh
 $ ./bin/send-event
