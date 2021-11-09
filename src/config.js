@@ -25,10 +25,6 @@ const app = {
   mount: "/hook",
 };
 
-const processor = {
-  topic: app.topic,
-};
-
 const slack = {
   webhookUrl: process.env.SLACK_WEBHOOK_URL,
 };
@@ -38,6 +34,5 @@ module.exports = {
   kafka,
   consumer,
   app,
-  processor,
   slack,
 };
