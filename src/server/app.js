@@ -49,7 +49,7 @@ module.exports = ({ producer, config }) => {
           {
             key: 'key',
             value: JSON.stringify({
-              _time: new Date().toISOString().replace(/T/, ' ').replace(/\..+/, ''),
+              _time: new Date().toISOString(),//.replace(/T/, ' ').replace(/\..+/, ''),
               number: parseInt(req.params.number)
             }),
           },
