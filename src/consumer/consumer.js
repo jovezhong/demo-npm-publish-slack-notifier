@@ -6,14 +6,13 @@ module.exports = async ({ kafka, config, slack }) => {
 
   await consumer.run({
     eachMessage: async ({ message }) => {
-      const text=message.value.toString();
-      //const { package, version } = JSON.parse(message.value.toString());
-
-      //const text = `:package: ${package}@${version} released\n<https://www.npmjs.com/package/${package}/v/${version}|Check it out on NPM>`;
-
+      const { _emit_time, _time, number } = JSON.parse(message.value.toString());
+      const _timeLong=Date.parse(_time);
+      const gap=Date.parse(_emit_time)-_timeLong;
+      const text=`:alert: You just got the magic number \`${number}\` at <!date^${_timeLong/1000|0}^{time_secs} {date_short_pretty}|bak>, with ${gap}ms latency since the data is generated\n<https://timeplus.io|Check more details in Timeplus>`;
       await slack.send({
         text,
-        username: "Package bot",
+        username: "Timeplus bot",
       });
     },
   });
